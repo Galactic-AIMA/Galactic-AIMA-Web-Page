@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galactic AI Agents Agency - Automatización Inteligente</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Applying the Poppins font */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0e1a; /* Dark blue background */
+            color: #e0e0e0; /* Light grey text */
+        }
+        /* Custom styles for neon effects and gradients */
+        .neon-glow {
+            box-shadow: 0 0 5px #00d1ff, 0 0 15px #00d1ff, 0 0 30px #00d1ff;
+        }
+        .neon-text {
+            text-shadow: 0 0 5px #00d1ff, 0 0 10px #00d1ff;
+        }
+        .gradient-bg {
+            background: linear-gradient(90deg, #0a0e1a 0%, #1a2035 100%);
+        }
+        .card-bg {
+            background-color: rgba(26, 32, 53, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 209, 255, 0.2);
+        }
+        .btn-primary {
+            background: #00d1ff;
+            color: #0a0e1a;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: #fff;
+            color: #00d1ff;
+            box-shadow: 0 0 15px #00d1ff;
+        }
+        /* Styles for Chat Widget */
+        #chat-widget {
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .chat-message-container {
+            max-height: 400px;
+        }
+        .chat-bubble {
+            max-width: 80%;
+        }
+        .user-bubble {
+            background-color: #00d1ff;
+            color: #0a0e1a;
+        }
+        .bot-bubble {
+            background-color: #1e293b;
+            color: #e0e0e0;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-80 backdrop-blur-md border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white neon-text">
+                <span class="text-[#00d1ff]">G</span>alactic<span class="text-[#00d1ff]">AI</span> Agency
+            </a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#services" class="hover:text-[#00d1ff] transition-colors duration-300">Servicios</a>
+                <a href="#portfolio" class="hover:text-[#00d1ff] transition-colors duration-300">Portafolio</a>
+                <a href="#about" class="hover:text-[#00d1ff] transition-colors duration-300">Nosotros</a>
+                <a href="#contact" class="btn-primary font-semibold py-2 px-5 rounded-full">
+                    Contáctanos
+                </a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#services" class="block py-2 px-6 text-sm hover:bg-gray-800">Servicios</a>
+            <a href="#portfolio" class="block py-2 px-6 text-sm hover:bg-gray-800">Portafolio</a>
+            <a href="#about" class="block py-2 px-6 text-sm hover:bg-gray-800">Nosotros</a>
+            <a href="#contact" class="block py-2 px-6 text-sm hover:bg-gray-800">Contáctanos</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center pt-20 gradient-bg">
+            <div class="container mx-auto px-6 text-center">
+                <div class="md:w-3/4 mx-auto">
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
+                        Construimos <span class="neon-text text-[#00d1ff]">Agentes de IA</span> para Potenciar tu Negocio
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-300 mb-8">
+                        Integramos automatización n8n, producción audiovisual e impresión 3D para ofrecerte soluciones que otros no pueden. Optimiza, crea y escala.
+                    </p>
+                    <a href="#services" class="btn-primary font-bold py-4 px-8 rounded-full text-lg">
+                        Descubre Nuestras Soluciones
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Nuestra Oferta de Valor</h2>
+                    <p class="text-gray-400 mt-2">Soluciones integrales diseñadas para el crecimiento de tu empresa.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Package 1: Básico -->
+                    <div class="card-bg p-8 rounded-2xl transform hover:-translate-y-2 transition-transform duration-300">
+                        <h3 class="text-xl font-bold text-[#00d1ff] mb-3">Paquete Básico</h3>
+                        <p class="text-gray-300">Ideal para empezar a automatizar. Gestión de redes sociales, respuestas automáticas y captura de leads.</p>
+                    </div>
+                    <!-- Package 2: Avanzado -->
+                    <div class="card-bg p-8 rounded-2xl transform hover:-translate-y-2 transition-transform duration-300">
+                        <h3 class="text-xl font-bold text-[#00d1ff] mb-3">Paquete Avanzado</h3>
+                        <p class="text-gray-300">Para estrategias de marketing potentes. Integración CRM, análisis de datos y segmentación de clientes.</p>
+                    </div>
+                    <!-- Package 3: Operaciones -->
+                    <div class="card-bg p-8 rounded-2xl transform hover:-translate-y-2 transition-transform duration-300">
+                        <h3 class="text-xl font-bold text-[#00d1ff] mb-3">Paquete de Operaciones</h3>
+                        <p class="text-gray-300">Optimiza tu flujo de trabajo. Sincronización de inventario, facturación y gestión de pedidos.</p>
+                    </div>
+                    <!-- Package 4: Personalizado -->
+                    <div class="card-bg p-8 rounded-2xl transform hover:-translate-y-2 transition-transform duration-300">
+                        <h3 class="text-xl font-bold text-[#00d1ff] mb-3">Solución Personalizada</h3>
+                        <p class="text-gray-300">Creamos un agente de IA a la medida de tus necesidades únicas. El límite es tu imaginación.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 gradient-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Casos de Éxito (Simulados)</h2>
+                    <p class="text-gray-400 mt-2">Así es como transformamos los negocios.</p>
+                </div>
+                <div class="space-y-12">
+                    <!-- Case Study 1 -->
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="md:w-1/2">
+                            <h3 class="text-2xl font-bold text-[#00d1ff] mb-3">E-commerce Local</h3>
+                            <p class="text-gray-300 mb-4">Automatizamos la gestión de pedidos y el seguimiento de envíos, integrando su inventario con su tienda online. Con el contenido audiovisual, lanzamos una campaña en redes que disparó sus ventas.</p>
+                            <span class="font-bold text-white">Resultado: +30% en ventas, -15 horas de trabajo manual a la semana.</span>
+                        </div>
+                        <div class="md:w-1/2">
+                            <img src="https://placehold.co/600x400/0a0e1a/00d1ff?text=Caso+de+Éxito+1" alt="Caso de Éxito 1" class="rounded-lg shadow-lg">
+                        </div>
+                    </div>
+                    <!-- Case Study 2 -->
+                    <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                        <div class="md:w-1/2">
+                            <h3 class="text-2xl font-bold text-[#00d1ff] mb-3">Agencia de Marketing</h3>
+                            <p class="text-gray-300 mb-4">Creamos un agente que centralizaba los leads de todas las plataformas (Facebook, Google, Web) en su CRM, notificando al equipo de ventas en tiempo real y generando reportes automáticos.</p>
+                            <span class="font-bold text-white">Resultado: Tasa de respuesta a leads mejorada en un 50%.</span>
+                        </div>
+                        <div class="md:w-1/2">
+                            <img src="https://placehold.co/600x400/1a2035/ffffff?text=Caso+de+Éxito+2" alt="Caso de Éxito 2" class="rounded-lg shadow-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Us Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Tu Ventaja Competitiva Integral</h2>
+                    <p class="text-lg text-gray-300">No solo entregamos código; entregamos una estrategia completa. Nuestra sinergia única entre la <span class="font-bold text-[#00d1ff]">automatización</span>, la <span class="font-bold text-[#00d1ff]">producción audiovisual</span> y la <span class="font-bold text-[#00d1ff]">impresión 3D</span> nos permite ofrecer soluciones que optimizan tu operación y, al mismo tiempo, crean el contenido para comunicar tu éxito. Somos tu socio estratégico para la innovación en Colombia.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 gradient-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Hablemos de tu Proyecto</h2>
+                    <p class="text-gray-400 mt-2">Completa el formulario y un especialista se pondrá en contacto contigo.</p>
+                </div>
+                <div class="max-w-xl mx-auto">
+                    <form class="card-bg p-8 rounded-2xl space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Nombre</label>
+                            <input type="text" id="name" name="name" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#00d1ff]">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                            <input type="email" id="email" name="email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#00d1ff]">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-1">¿Cómo podemos ayudarte?</label>
+                            <textarea id="message" name="message" rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#00d1ff]"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn-primary font-bold py-3 px-8 rounded-full w-full">
+                                Enviar Solicitud
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Floating Chatbot Icon -->
+    <div class="fixed bottom-6 right-6 z-[999]">
+        <button id="chatbot-button" class="bg-[#00d1ff] p-4 rounded-full shadow-lg neon-glow transform hover:scale-110 transition-transform duration-300">
+            <!-- Chatbot SVG Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#0a0e1a]" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9.5 13.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm5 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM7 7h10v1H7V7z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Chat Widget Window -->
+    <div id="chat-widget" class="fixed bottom-24 right-6 w-80 md:w-96 rounded-2xl shadow-2xl hidden opacity-0 translate-y-4 z-[998]">
+        <div class="card-bg rounded-2xl h-full flex flex-col">
+            <!-- Header -->
+            <div class="flex justify-between items-center p-4 border-b border-gray-700">
+                <h3 class="text-lg font-bold neon-text text-white">Asistente Virtual</h3>
+                <button id="close-chat-button" class="text-gray-400 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <!-- Messages -->
+            <div id="chat-messages" class="flex-1 p-4 space-y-4 overflow-y-auto chat-message-container">
+                <!-- Initial Bot Message -->
+                <div class="flex justify-start">
+                    <div class="chat-bubble bot-bubble p-3 rounded-lg">
+                        <p class="text-sm">Hola 👋 ¡Soy tu asistente de GalacticAI! ¿En qué puedo ayudarte hoy?</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Input -->
+            <div class="p-4 border-t border-gray-700">
+                <form id="chat-form" class="flex items-center space-x-2">
+                    <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." class="w-full bg-gray-800 border border-gray-700 rounded-full px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#00d1ff]" autocomplete="off">
+                    <button type="submit" class="btn-primary rounded-full p-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="bg-[#0a0e1a] border-t border-gray-800 py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2024 Galactic AI Agents Agency. Todos los derechos reservados.</p>
+            <p class="text-sm mt-2">Hecho con 💙 en Colombia para el mundo.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- JavaScript for mobile menu toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        for (let link of mobileMenuLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+        
+        // --- NEW: JavaScript for Chat Widget and n8n Webhook ---
+        const chatbotButton = document.getElementById('chatbot-button');
+        const chatWidget = document.getElementById('chat-widget');
+        const closeChatButton = document.getElementById('close-chat-button');
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const chatMessages = document.getElementById('chat-messages');
+
+        const n8nWebhookUrl = 'https://www.galacticaima.com/webhook-test/0eaea545-0acc-4318-bdef-c025e11701d3';
+
+        // Function to toggle chat widget visibility
+        const toggleChat = () => {
+            if (chatWidget.classList.contains('hidden')) {
+                chatWidget.classList.remove('hidden');
+                setTimeout(() => {
+                    chatWidget.classList.remove('opacity-0', 'translate-y-4');
+                }, 10);
+            } else {
+                chatWidget.classList.add('opacity-0', 'translate-y-4');
+                setTimeout(() => {
+                    chatWidget.classList.add('hidden');
+                }, 300);
+            }
+        };
+        
+        chatbotButton.addEventListener('click', toggleChat);
+        closeChatButton.addEventListener('click', toggleChat);
+        
+        // Function to append a message to the chat window
+        const appendMessage = (message, sender) => {
+            const messageWrapper = document.createElement('div');
+            messageWrapper.classList.add('flex', sender === 'user' ? 'justify-end' : 'justify-start');
+
+            const messageBubble = document.createElement('div');
+            messageBubble.classList.add('chat-bubble', sender === 'user' ? 'user-bubble' : 'bot-bubble', 'p-3', 'rounded-lg');
+            
+            const messageParagraph = document.createElement('p');
+            messageParagraph.classList.add('text-sm');
+            messageParagraph.textContent = message;
+            
+            messageBubble.appendChild(messageParagraph);
+            messageWrapper.appendChild(messageBubble);
+            chatMessages.appendChild(messageWrapper);
+            
+            // Scroll to the latest message
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        };
+
+        // Handle chat form submission
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const userMessage = chatInput.value.trim();
+            
+            if (!userMessage) return;
+
+            // 1. Display user's message immediately
+            appendMessage(userMessage, 'user');
+            chatInput.value = '';
+            
+            // 2. Show a "typing..." indicator for the bot
+            appendMessage('...', 'bot');
+            const typingIndicator = chatMessages.lastChild;
+
+            try {
+                // 3. Send message to n8n webhook
+                const response = await fetch(n8nWebhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: userMessage }),
+                });
+
+                // 4. Remove typing indicator as soon as we have a response
+                typingIndicator.remove();
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                // 5. Smartly process the response (JSON or Text)
+                const contentType = response.headers.get("content-type");
+                let botReply;
+
+                if (contentType && contentType.includes("application/json")) {
+                    const data = await response.json();
+                    // Be flexible: check for 'reply', 'message', 'text', or 'Message' keys in the JSON
+                    botReply = data.reply || data.message || data.text || data.Message || JSON.stringify(data);
+                } else {
+                    // If it's not JSON, treat it as plain text
+                    botReply = await response.text();
+                }
+                
+                // Use a fallback if the final reply is empty
+                if (!botReply || botReply.trim() === '' || botReply.trim() === '{}') {
+                    botReply = 'Gracias, hemos recibido tu mensaje.';
+                }
+
+                // 6. Display bot's final response
+                appendMessage(botReply, 'bot');
+
+            } catch (error) {
+                console.error('Error sending message to webhook:', error);
+                // Handle any error in the UI
+                if (typingIndicator && typingIndicator.parentElement) {
+                     typingIndicator.remove();
+                }
+                appendMessage('Lo siento, hubo un problema al conectar con nuestro asistente. Inténtalo de nuevo más tarde.', 'bot');
+            }
+        });
+
+    </script>
+
+</body>
+</html>
+
+
