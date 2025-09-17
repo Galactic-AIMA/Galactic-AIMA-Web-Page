@@ -7,6 +7,7 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -332,7 +333,9 @@
             
             const messageParagraph = document.createElement('p');
             messageParagraph.classList.add('text-sm');
-            messageParagraph.textContent = message;
+            
+            // ▼▼▼ ¡ESTA ES LA ÚNICA LÍNEA QUE CAMBIA! ▼▼▼
+            messageParagraph.innerHTML = message;
             
             messageBubble.appendChild(messageParagraph);
             messageWrapper.appendChild(messageBubble);
@@ -392,8 +395,10 @@
                     botReply = 'Gracias, hemos recibido tu mensaje.';
                 }
 
+                const formattedReply = marked.parse(botReply);
+
                 // 6. Display bot's final response
-                appendMessage(botReply, 'bot');
+                appendMessage(formattedReply, 'bot');
 
             } catch (error) {
                 console.error('Error sending message to webhook:', error);
